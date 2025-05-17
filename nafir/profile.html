@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nafir Homes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Work Sans', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+     
+    }
+
+    .profile {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .profile:hover {
+      transform: scale(1.03);
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .container {
+      text-align: center;
+      height:600px;
+      width: 90%;
+      max-width: 100%;
+      box-shadow: 0 0 10px;
+      padding: 20px;
+    
+      
+    }
+
+    .change-password {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-right: 50px;
+    }
+
+    button {
+      background-color: #2e5d8c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #21494e;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #2e5d8c;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <label for="upload">
+      <img id="profileImage" src="https://i.pinimg.com/736x/e6/33/ec/e633ecc56c1de05299317f69694046f0.jpg" alt="Profile" class="profile">
+    </label>
+    <input type="file" id="upload" accept="image/*">
+    <h3 id="usernameDisplay"></h3>
+    <script>
+      // Display username from localStorage below the profile image
+      // This assumes the username was saved to localStorage during sign-in or sign-up
+      const username = localStorage.getItem("username");
+      document.getElementById("usernameDisplay").textContent = username ? username : "Username";
+    </script>
+
+    <!-- Change Password Section -->
+    <div class="change-password">
+      <label for="newPassword"><strong>Change your password:</strong></label>
+      <input type="password" id="newPassword" placeholder="Enter new password">
+      <button onclick="changePassword()">Update Password</button>
+    </div>
+
+    <!-- Delete Account Section -->
+    <div class="change-password">
+      <label><strong>Delete Account:</strong></label><br>
+      <button onclick="deleteAccount()" style="background-color: crimson;">Delete My Account</button>
+    </div>
+
+    <h1>NAFIR HOMES</h1>
+    <a href="WEB.html">Back Home</a>
+  </div>
+
+  <script>
+    const uploadInput = document.getElementById('upload');
+    const profileImage = document.getElementById('profileImage');
+
+    // Load saved image and password (if needed)
+    window.onload = () => {
+      const storedImage = localStorage.getItem("profileImage");
+      if (storedImage) {
+        profileImage.src = storedImage;
+      }
+    };
+
+    // Upload image and save to localStorage
+    uploadInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          profileImage.src = e.target.result;
+          localStorage.setItem("profileImage", e.target.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Change password function
+    function changePassword() {
+      const newPass = document.getElementById("newPassword").value;
+      if (newPass.trim() === "") {
+        alert("Please enter a valid password.");
+      } else {
+        localStorage.setItem("userPassword", newPass);
+        alert("Password updated successfully!");
+        document.getElementById("newPassword").value = ""; // Clear input
+      }
+    }
+
+    // Delete account function
+    function deleteAccount() {
+      if (confirm("Are you sure you want to delete your account? This cannot be undone.")) {
+        localStorage.clear();
+        alert("Account deleted successfully.");
+        location.reload(); // Or redirect to sign-in page
+      }
+    }
+  </script>
+
+</body>
+</html>

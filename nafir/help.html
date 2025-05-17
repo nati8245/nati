@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nafir Homes | Help</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        body {
+            color: white;
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            color: black;
+            background-image:linear-gradient(to left , #2c3e50, #34475a);
+            position: fixed;
+            position: relative;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 0 10px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        nav select {
+            font-size: 16px;
+            background: transparent;
+            color:white;
+            border: 1px solid black;
+            padding: 5px;
+        }
+        nav select option{
+            background:  #2c3e50 ;
+        }
+        .main{
+            width:90%;
+            display: flex;
+            height: 100vh;
+            text-align: center;
+            margin-bottom: 0%;
+            margin-top: 0%;
+            outline: none;
+            position: absolute;    
+        }
+        .left{
+            width: 50%;
+            height: 100%;
+            background:linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2)), url('https://noahrealestateplc.com/templates/yootheme/cache/aa/photo_2024-06-20_15-50-10-aaf9a137.webp');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode:difference;
+            text-align: center;
+            padding-top: 50px;
+           
+        }
+        .left h1{
+            color: #2c3e50;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 50px;
+        }
+        .left p{
+            margin-top: 410px;
+            font-size: 30px;
+            font-family:cursive;
+            color:white;
+        }
+        .right{
+            width: 50%;
+            height: 100%;
+            align-content: center;
+            
+        }
+        .right form{
+           height: 100%;
+           width: 100%;
+           text-align: center;
+           align-content: center;
+        }
+        .right form input{
+            width:100%;
+            padding: 15px;
+            margin: 0 55px;
+            border: none;
+            border-bottom:4px groove  #2c3e50;
+            color: #2c3e50;
+            font-family: cursive;
+            font-size: 20px;
+        }
+        textarea{
+            width:100%;
+            margin:0 55px;
+            border: none;
+            border-bottom:4px groove #2c3e50;
+            color: #2c3e50;
+            font-family: cursive;
+            font-size: 20px;
+        }
+        .right form h1{
+            color: #2c3e50;
+            font-size: 40px;
+            font-weight: bold;
+        }
+        button{
+            width:100%;
+            margin: 0 55px;
+            padding: 10px;
+            font-size: 20px;
+            background-color: #2c3e50;
+            color: whitesmoke;
+            transition: 0.3s ease-in-out;
+        }
+        button:hover{
+            transform: scale(0.97);
+            background-color:  #3f566d;
+            box-shadow: 0 0 10px black;
+        }
+        .gg{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 55px;
+            padding-top: 10px;
+        }
+        .gg a{
+            font-size: 20px;
+            text-decoration: none ;
+            background:  #2c3e50;
+            padding: 10px;
+            color: white;
+           
+        }
+        .gg a:hover{
+            text-decoration: underline;
+            background:  #3d5670;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="WEB.html">HOME</a>
+        <a href="Fined homes.html">FIND HOMES</a>
+        <a href="saved-homes.html">SAVED HOMES</a>
+        <a href="notification.html">Notifications</a>
+        <div>
+            <select id="language">
+                <option value="eng">ENG</option>
+                <option value="am">Amharic</option>
+            </select>
+            <select id="currency">
+                <option value="etb">ETB</option>
+                <option value="usdt">USDT</option>
+            </select>
+        </div>
+    </nav>
+    <div class="main">
+        <div class="left">
+            <h1>What Can Nafir Help!</h1>
+            <p>Location:Ethiopia/Addiss abeba/Summit-lemikura.</p>
+        </div>
+        <div class="right">
+             <form>
+                <h1>Contact us</h1>
+                <input type="text" placeholder="Name" required><br><br>
+                <input type="email" placeholder="Email" required><br><br>
+               <textarea rows="3" placeholder="say something"></textarea><br><br>
+               <button type="submit">Send</button>
+               <div class="gg">
+                <a href="#">Telegram</a>
+                <a href="#">Youtube</a>
+                <a href="#">Instagram</a>
+               </div>
+             </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        // Initialize EmailJS
+        (function(){
+            emailjs.init("AaoeOgUsgfjA3LxMy");  // Replace with your EmailJS user ID
+        })();
+
+        function sendMessage() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (username && email && message) {
+                const templateParams = {
+                    user_name: username,
+                    user_email: email,
+                    message: message
+                };
+
+                // Send email using EmailJS
+                emailjs.send("service_9t1k7tg","template_mwqdetg", templateParams)
+                    .then(function(response) {
+                        alert("Message sent successfully!");
+                    }, function(error) {
+                        alert("Failed to send message: " + error.text);
+                    });
+            } else {
+                alert('Please fill out all fields.');
+            }
+        }
+    </script>
+</body>
+</html>

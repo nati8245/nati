@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NAFIR Homes | Notifications</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 30px;
+    }
+    a {
+      color: green;
+    }
+    img {
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://i.pinimg.com/736x/a3/f0/e3/a3f0e31002bfb1b4cd4f8d8c5aacaf70.jpg" alt="Notification" />
+  <h1>Notifications</h1>
+  <h4 id="message">Checking login status...</h4>
+
+  <script>
+    const message = document.getElementById("message");
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn === "true") {
+      message.innerHTML = "You're signed in! You’ll receive your notifications here soon. 📬";
+    } else {
+      alert("You must be signed in to view notifications.");
+      window.location.href = "sign-in.html";
+    }
+  </script>
+
+</body>
+</html>
