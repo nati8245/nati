@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nafir Homes | Saved Homes</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Work Sans', sans-serif;
+      background:linear-gradient(to right, #f8f9fa42, #e9ecef77),url('/') no-repeat center center fixed;
+      background-size: cover; 
+
+    }
+
+    nav {
+      height: 80px;
+      width: 100%;
+      display: flex;
+      border-bottom: 2px groove gold;
+      align-items: center;
+      padding: 0 20px;
+      background:transparent;
+      color: rgb(0, 0, 0);
+      position: fixed;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-size: 18px;
+      padding: 0 40px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      border-bottom: 1px solid #000;
+      padding-bottom: 5px;
+
+    }
+
+    .container {
+      margin-top: 100px;
+      padding: 20px;
+    
+    }
+
+    .home-card {
+      background: white;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      overflow: hidden;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+.home-info {
+      display: flex;
+      /* flex-direction: column; */
+      justify-content: center;
+    }
+    .home-card-actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-left: 15px;
+      margin-top: 10px;
+    }
+    .home-card a{
+      text-decoration: none;
+      color: #007bff;
+      border: 1px solid #b1bcc8;
+      padding: 5px 10px;
+      border-radius: 5px;
+      height: fit-content;
+        width: 100px;
+
+    }
+    .home-card a:hover {
+      background-color: #dfb809;
+      color: white;
+      border: 1px groove #dfb809;
+      color: rgb(0, 0, 0);
+    
+    }
+
+    .home-card:hover {
+      transform: scale(1.02);
+    }
+
+    .home-card img {
+      width: 200px;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .home-info p {
+      display: flex;
+      align-items: center;
+    }
+     
+    .home-info {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .home-info h3 {
+      margin: 0 0 10px;
+      color: #333;
+    }
+
+    .home-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+.home-info p {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 6px;
+  padding: 6px 12px;
+  margin: 5px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+.home-info p:hover {
+  background: #fffbe6;
+}
+
+.home-info ul{
+  list-style: none;
+  padding: 0;
+  display: flex;
+  margin: 0;
+  justify-content: space-between;
+}
+.home-info ul li {
+  margin-bottom: 5px;
+  color: #666;
+}
+.home-info ul li strong {
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .home-card {
+    flex-direction: column;
+    align-items: center;
+  }
+  .home-card img {
+    width: 100%;
+    height: auto;
+  }
+  .home-info {
+    text-align: center;
+  }
+}
+    #map {
+      height: 900px; /* Smaller height */
+      margin-top: 30px;
+   
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div><h1>Nafir Homes</h1></div>
+    <div>
+      <a href="WEB.html">Home</a>
+      <a href="notification.html">Notifications</a>
+      <a href="sign-in.html">Sign In</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h2>Your Saved Homes</h2>
+    <div id="savedHomesContainer"></div>
+
+    <h3>Map View</h3>
+    <div id="map"></div>
+  </div>
+
+  <script>
+  const savedHomes = JSON.parse(localStorage.getItem('savedHomes')) || [];
+const container = document.getElementById("savedHomesContainer");
+
+// Satellite map
+const map = L.map('map').setView([9.145, 40.4897], 6);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: '&copy; <a href="https://www.esri.com/">Esri</a>'
+}).addTo(map);
+
+// Add to Cart function
+function addToCart(home) {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push(home);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert('Added to cart!');
+}
+
+if (savedHomes.length === 0) {
+  container.innerHTML = "<p>You haven't saved any homes yet.</p>";
+} else {
+  savedHomes.forEach(home => {
+    const card = document.createElement("div");
+    card.className = "home-card";
+    card.innerHTML = `
+      <img src="${home.imageUrl}" alt="Home Image">
+      <div class="home-info">
+        <h3>${home.title}</h3>
+        <p>Location: ${home.location}</p>
+        <p>Units: ${home.units}</p>
+        <ul>
+          <li><strong>Bedrooms:</strong> ${home.bedrooms || 3} </li>
+          <li><strong>Bathrooms:</strong> ${home.bathrooms  || 3}</li>
+          <li><strong>Year Built:</strong> ${home.yearBuilt  || 2020}</li>
+          <li><strong>Status:</strong> ${home.status || 'Available'}</li>
+        </ul>
+        <a href="cart.html" class="add-to-cart" style="margin-left:15px;">Add to Cart</a>
+      </div>
+    `;
+
+    // Add to Cart link handler
+    const addToCartLink = card.querySelector('.add-to-cart');
+    addToCartLink.addEventListener('click', function(event) {
+      event.stopPropagation(); // Prevent card click
+      addToCart(home);
+      window.location.href = 'cart.html';
+    });
+
+    // Card click handler (for map)
+    card.addEventListener("click", () => {
+      geocodeLocation(home.location, (coords) => {
+        if (coords) {
+          map.setView(coords, 13);
+          L.marker(coords).addTo(map).bindPopup(home.title).openPopup();
+          sendNotification(home.title, home.location);
+        }
+      });
+    });
+
+    container.appendChild(card);
+  });
+}
+
+function geocodeLocation(address, callback) {
+  fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.length > 0) {
+        const { lat, lon } = data[0];
+        callback([parseFloat(lat), parseFloat(lon)]);
+      } else {
+        alert("Location not found.");
+        callback(null);
+      }
+    })
+    .catch(() => {
+      alert("Geocoding failed.");
+      callback(null);
+    });
+}
+
+function sendNotification(title, location) {
+  const message = `You viewed ${title} in ${location}`;
+  localStorage.setItem("userNotification", message);
+}
+  </script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nafir Homes - Find Your Perfect Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Work Sans', sans-serif;
+    }
+    body {
+      /* background-color: #f8f9fa; */
+      /* background-image:linear-gradient(rgba(0, 0, 0, 0.542),rgba(0, 0, 0, 0.865)), url('https://images.pexels.com/photos/32025867/pexels-photo-32025867/free-photo-of-modern-kitchen-interior-with-elegant-lighting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); */
+      background-size: cover;
+      background-position: center;
+      justify-content: center;
+    }
+    nav {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      /* background: #333; Set a dark background color for better contrast */
+      color: rgba(0, 0, 0, 0.957);
+    }
+    nav a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      /* font-size: 16px; */
+      padding:5px 10px;
+    }
+    nav a:hover {
+      transform: scale(1.09);
+      background-color: rgba(255, 217, 0, 0.615);
+      border-radius: 10px;
+    }
+    nav h1 {
+      font-size: 24px;
+      color: rgb(246, 185, 4);
+      text-align: center;
+      margin: 0;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+    .real-estate-card {
+      background: rgb(255, 255, 255);
+      /* border: 1px solid gold; */
+      border-radius: 8px;
+      box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+      transition: 0.3s ease;
+      width:400px;
+      /* max-width: 350px; */
+      margin: 15px;
+      padding: 10px;
+     
+    }
+    .real-estate-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .real-estate-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+     
+    }
+    .real-estate-card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+      color: #ffc800;
+    }
+    .real-estate-card p {
+      color: #666;
+      font-size: 14px;
+    }
+    .real-estate-card button {
+      margin-top: 10px;
+       background:rgba(255, 183, 0, 0.652);
+      color: rgb(0, 0, 0);
+      border: 1px groove gold;
+      padding: 8px 12px;
+      margin-left: 20px;
+      cursor: pointer;
+      /* border-radius: 5px; */
+      font-size: 14px;
+      transition: .5s ease;
+    }
+    .real-estate-card button:hover {
+      background: rgba(249, 164, 6, 0.984);
+      color: #000;
+      transform: scale(1.05);
+    
+    }
+    footer {
+      background: #010101;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      height: fit-content;
+    }
+    footer .links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      color: #f8f9fa;
+         }
+         .links a {
+      color: #f8f9fa;}
+
+    footer .partners-link {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 18px;
+      padding: 10px 20px;
+      background: rgba(0,0,0,0.04);
+      border-radius: 6px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+      justify-content: center;
+      gap: 20px;
+      color: #f8f9fa;
+
+    }
+    footer .partners-link a {
+      color: #f8f9fa;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    footer .partners-link a:hover {
+      text-decoration: underline;
+    }
+    footer .email {
+      /* margin-top: 20px; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    footer .email form {
+      display: flex;
+      flex-direction: column;
+      font-size: 11px;
+      font-family: 'Lexend', 'Work Sans', sans-serif;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      max-width: 320px;
+      gap: 0;
+      width: 300px;
+    }
+    footer .email form label {
+    
+      color: #f8f9fa;
+    }
+    footer .email form input,
+    footer .email form textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      background: transparent;
+      color: #f8f9fa;
+    }
+    footer .email form button {
+      background: #f8f9fa;
+      color: #333;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    footer .email form button:hover {
+      background: #ccc;
+      color: #000;
+      transform: scale(1.05);
+    }
+    @media screen and (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav h1 {
+        margin-top: 10px;
+        text-align: center;
+      }
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .real-estate-card {
+        width: 90%;
+        max-width: 350px;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div>
+      <a href="WEB.html">Home</a>
+      <a href="saved-homes.html">Saved Homes</a>
+      <a href="notification.html">Notifications</a>
+      <a href="sign-in.html">Sign In</a>
+      <a href="cart.html">Cart</a>
+    </div>
+    <div><h1>Nafir Homes</h1></div>
+  </nav>
+
+  <div class="container" id="homeCardsContainer">
+    <!-- Homes will be dynamically added here -->
+  </div>
+
+  <footer>
+    <p>&copy; All Rights Reserved - Nafir Homes</p>
+    <div class="links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+      <a href="contact-us.html">Contact Us</a>
+      <a href="about-us.html">About Us</a>
+    </div>
+    <div class="partners-link">
+      <a href="https://www.noahrealestateplc.com/" target="_blank">Noah Real Estate</a>
+      <a href="https://www.sunriserealestate.net/" target="_blank">Sunrise Real Estate</a>
+      <a href="https://www.ethiopianrealestate.com/" target="_blank">Ethiopian Real Estate</a>
+      <a href="https://www.ethiopianproperty.com/" target="_blank">Ethiopian Property</a>
+      <a href="https://www.ethiopianhomes.com/" target="_blank">Ethiopian Homes</a>
+      <a href="https://www.ethiopianland.com/" target="_blank">Ethiopian Land</a>
+    </div>
+    <div class="email" id="emailSection">
+      <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const emailForm = document.querySelector(".email-form");
+        if (emailForm) {
+        emailForm.addEventListener("submit", function(e) {
+          e.preventDefault();
+          alert("Your message is delivered. Thank you!");
+          emailForm.reset();
+        });
+        }
+      });
+      </script>
+      <form action="mailto:your@email.com" method="POST" enctype="text/plain" style="margin-top:20px;" class="email-form">
+        <label for="email">Your Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="3" required></textarea><br>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </footer>
+
+  <script>
+    const conversionRates = {
+      usdt: 1,    // 1 USDT = 1 USDT
+      etb: 55.50  // 1 USDT = 55.50 ETB (adjust based on real-time rates)
+    };
+
+    const homes = [
+      {
+        title: "Luxury Villa in Addis Ababa",
+        location: "Bole, Addis Ababa",
+        priceUSDT: 500000,
+         bedRooms: 3,
+        yearBuilt: 2020,
+        imageUrl: "https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+        email: "info@luxuryvilla.com",
+        website: "https://luxuryvilla.com"
+      },
+      {
+        title: "Modern Apartments in Hawassa",
+        location: "Hawassa, Sidama",
+        priceUSDT: 250000,
+         bedRooms: 3,
+        yearBuilt: 2020,
+        imageUrl: "https://images.pexels.com/photos/32025867/pexels-photo-32025867/free-photo-of-modern-kitchen-interior-with-elegant-lighting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      {
+        title: "Beachfront Property in Bahir Dar",
+        location: "Bahir Dar, Amhara",
+        priceUSDT: 350000,
+         bedRooms: 3,
+        yearBuilt: 2020,
+        imageUrl: "https://images.pexels.com/photos/32025967/pexels-photo-32025967/free-photo-of-luxury-modern-kitchen-and-living-room-interior-design.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      },
+      {
+        title: "Noah Real Estate",
+        location: "Summit, Addis Ababa",
+        priceUSDT: 668,
+         bedRooms: 3,
+        yearBuilt: 2020,      
+        imageUrl: "https://images.pexels.com/photos/32025968/pexels-photo-32025968/free-photo-of-modern-luxury-living-room-with-wooden-ceiling.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+      }
+      ,
+    {
+  title: "Elegant Apartment in Bole",
+  location: "Bole, Addis Ababa",
+  priceUSDT: 420000,
+  bedRooms: 3,
+  yearBuilt: 2020,
+  imageUrl: "https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+},
+{
+  title: "Exclusive Penthouse in Megenagna",
+  location: "Megenagna, Addis Ababa",
+  priceUSDT: 600000,
+  bedRooms: 3,
+  yearBuilt: 2020,
+  imageUrl: "https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2S"
+}
+    ];
+
+    const container = document.getElementById("homeCardsContainer");
+
+   function updateHomes() {
+  container.innerHTML = ''; // Clear previous listings
+
+  homes.forEach((home, index) => {
+    const priceFormatted = `$${home.priceUSDT.toFixed(2)} USDT`;
+
+    const card = document.createElement('div');
+    card.className = 'real-estate-card';
+
+    card.innerHTML = `
+      <img src="${home.imageUrl}" alt="${home.title}">
+      <div class="info">
+        <h3>${home.title}</h3>
+        <p>
+          Location: ${home.location}<br>
+          Price: ${priceFormatted}<br>
+          Bedrooms: ${home.bedRooms}<br>
+          Year Built: ${home.yearBuilt}<br>
+          <strong>Email:</strong> ${home.email}<br>
+          <strong>Website:</strong> <a href="${home.website}" target="_blank">${home.website ? 'Visit' : 'No website available'}</a>
+        </p>
+        <button class="save-btn" data-index="${index}">Save Home</button>
+        <button class="cart-btn" data-index="${index}">Add to Cart</button>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+
+  // Add event listeners for Save Home buttons
+  document.querySelectorAll('.save-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = this.getAttribute('data-index');
+      saveHome(index);
+    });
+  });
+
+  // Add event listeners for Add to Cart buttons
+  document.querySelectorAll('.cart-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const index = this.getAttribute('data-index');
+      addToCart(index);
+    });
+  });
+}
+
+// Add to Cart function
+function addToCart(index) {
+  const home = homes[index];
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  const alreadyInCart = cart.some(h => h.title === home.title && h.location === home.location);
+  if (alreadyInCart) {
+    alert("This home is already in your cart.");
+    return;
+  }
+
+  cart.push(home);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Home added to cart!");
+}
+
+    function saveHome(index) {
+      const home = homes[index];
+      const saved = JSON.parse(localStorage.getItem("savedHomes")) || [];
+
+      const alreadySaved = saved.some(h => h.title === home.title && h.location === home.location);
+      if (alreadySaved) {
+        alert("This home is already saved.");
+        return;
+      }
+
+      saved.push(home);
+      localStorage.setItem("savedHomes", JSON.stringify(saved));
+      alert("Home saved!");
+    }
+
+    updateHomes();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nafir Homes</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="nafir.css">
+    </head>
+    <body>
+        <nav>
+            <!-- <div class="log"><h1>NAFIR HOMES</h1></div> -->
+            <div>
+                <a href="Fined homes.html" data-key="findHomes">Find Homes</a>
+                <a href="saved-homes.html" data-key="savedHomes">Saved Homes</a>
+                <a href="notification.html" data-key="notifications">Notifications</a>
+                <a href="help.html" data-key="help">Help</a>
+                <a href="SIGN IN.HTML" data-key="signIn">Sign In</a>
+                <a href="profile.html"> Account</a>
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="fr">French</option>
+                    <option value="es">Spanish</option>
+                    <option value="am">Amharic</option>
+                </select>
+                <select id="currency-select">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                </select>
+            </div>
+        </nav>
+        <section class="hero">
+            <div class="left">
+ <div class="real-estate-list">
+                <a href="product view.html" target="_blank" class="real-estate-card">
+                    <img src="https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Noah Real Estate">
+                    <div class="info">
+                        <h2>Noah Real Estate</h2>  
+                    </div>
+                </a>
+                <a href="product view-1.html" target="_blank" class="real-estate-card">
+                    <img src="https://images.pexels.com/photos/32025867/pexels-photo-32025867/free-photo-of-modern-kitchen-interior-with-elegant-lighting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sunrise Real Estates">
+                    <div class="info">
+                        <h2>Sunrise Real Estates</h2>
+                    </div>
+                </a>
+            </div>
+            <a href="#section" class="abutton"></a>
+            </div>
+            <div class="right">
+                <h1 data-key="welcome">Real Estate In Nafir
+                    </h1>
+                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam accusamus corporis quam,</p>
+                <button id="getStartedBtn" data-key="getStarted">Get Started</button>
+
+            </div>
+        </section>
+        <div class="blog"></div>
+            <div class="blog-item">
+                <h2>Latest Real Estate News in Ethiopia</h2>
+                <ul id="ethiopia-news-list">
+                    <li>
+                        <a href="https://www.ena.et/en/?p=42582" target="_blank" rel="noopener">
+                            Ethiopia’s Real Estate Sector Shows Steady Growth in 2024
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://addisfortune.news/real-estate-market-in-ethiopia-remains-resilient/" target="_blank" rel="noopener">
+                            Real Estate Market in Ethiopia Remains Resilient Despite Challenges
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.thereporterethiopia.com/28543/" target="_blank" rel="noopener">
+                            New Regulations Aim to Boost Transparency in Ethiopian Real Estate
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+      <section id="section">
+            <h1 data-key="Promoted">Promoted Real Estates</h1>
+           <div class="sponsor">
+                <div class="sponsor-item">
+                    <img src="https://images.pexels.com/photos/32025867/pexels-photo-32025867/free-photo-of-modern-kitchen-interior-with-elegant-lighting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sponsor 1">
+                </div>
+                <div class="sponsor-item">
+                    <img src="https://images.pexels.com/photos/32025967/pexels-photo-32025967/free-photo-of-luxury-modern-kitchen-and-living-room-interior-design.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sponsor 2">
+                </div>
+                <div class="sponsor-item">
+                    <img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Sponsor 3">
+                </div>
+           </div>
+        </section>
+       
+        <script>
+            const translations = {
+                en: {
+                    findHomes: "Find Homes",
+                    savedHomes: "Saved Homes",
+                    notifications: "Notifications",
+                    help: "Help",
+                    signIn: "Sign In",
+                    welcome: "Welcome to Nafir Investment Group",
+                    getAccess: "Get Access Now!",
+                    getStarted: "Get Started",
+                    aboutTitle: "About Us",
+                    aboutText: "Nafir Investment Group is dedicated to providing high-quality real estate solutions. Our mission is to connect individuals with their dream homes in a seamless and efficient manner.",
+                    Promoted: "Promoted Real Estates",
+
+                    
+                },
+                fr: {
+                    findHomes: "Trouver des maisons",
+                    savedHomes: "Maisons sauvegardées",
+                    notifications: "Notifications",
+                    help: "Aide",
+                    signIn: "Se connecter",
+                    welcome: "Bienvenue chez Nafir Investment Group",
+                    getAccess: "Accédez maintenant!",
+                    getStarted: "Commencer",
+                     aboutTitle: "À propos de nous",
+                    aboutText: "Nafir Investment Group se consacre à fournir des solutions immobilières de haute qualité. Notre mission est de connecter les individus avec leur maison de rêve de manière transparente et efficace."
+                },
+                es: {
+                    findHomes: "Buscar casas",
+                    savedHomes: "Casas guardadas",
+                    notifications: "Notificaciones",
+                    help: "Ayuda",
+                    signIn: "Iniciar sesión",
+                    welcome: "Bienvenido a Nafir Investment Group",
+                    getAccess: "Accede ahora!",
+                    getStarted: "Empezar",
+                    aboutTitle: "Sobre nosotros",
+                    aboutText: "Nafir Investment Group se dedica a proporcionar soluciones inmobiliarias de alta calidad. Nuestra misión es conectar a las personas con la casa de sus sueños de manera fluida y eficiente."
+ 
+                },
+                am: {
+                    findHomes: "ቤቶችን ፈልግ",
+                    savedHomes: "የተቀመጡ ቤቶች",
+                    notifications: "ማሳወቂያዎች",
+                    help: "እርዳታ",
+                    signIn: "ግባ",
+                    welcome: "እንኳን ወደ ናፊር የኢንቨስትመንት ቡድን  በደህና መጡ",
+                    getAccess: "አሁን ይግቡ!",
+                    getStarted: "ይጀምሩ",
+                    aboutTitle: "ስለ እኛ",
+                    aboutText: "ናፊር የኢንቨስትመንት ቡድን የልምድ እና የጥራት የተሟሟ የእንደቀሳሽ መስራት እንዲችሉ ለማድረግ የተዋሐደ ነው። ተጠቃሚዎቻችንን በተሟሟ እና በደረቅ መንገድ ማስቀመጥ የእኛ ተልዕኮ ነው።",
+                    Promoted:"የተደገፉ ሪል እስቴቶች",
+ 
+                },
+            };
+
+            document.getElementById('language-select').addEventListener('change', function() {
+                const selectedLang = this.value;
+                document.querySelectorAll('[data-key]').forEach(el => {
+                    const key = el.getAttribute('data-key');
+                    if (translations[selectedLang][key]) {
+                        el.textContent = translations[selectedLang][key];
+                    }
+                });
+            });
+            window.onload = () => {
+    const savedImage = localStorage.getItem("profileImage");
+    if (savedImage) {
+      document.getElementById("mainProfileImage").src = savedImage;
+    }
+  };
+   // Check if the user is signed in
+   document.getElementById("getStartedBtn").addEventListener("click", function() {
+                const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+                if (isLoggedIn === "true") {
+                    // Redirect to the "Find Homes" page if the user is already signed in
+                    window.location.href = "Fined homes.html";
+                } else {
+                    // Redirect to the "Sign Up" page if the user is not signed in
+                    window.location.href = "SIGN UP.html";
+                }
+            });
+            const heroSection = document.querySelector('.hero');
+            heroSection.style.backgroundImage = "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')";
+            let currentHeroIndex = 0;
+            const heroImages = [
+                "https://images.pexels.com/photos/534151/pexels-photo-534151.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                "https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                "https://images.pexels.com/photos/32025867/pexels-photo-32025867/free-photo-of-modern-kitchen-interior-with-elegant-lighting.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            ];
+
+            function updateHeroBackground() {
+                heroSection.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${heroImages[currentHeroIndex]}')`;
+            }
+
+            setInterval(() => {
+                currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+                updateHeroBackground();
+            }, 4000);
+            heroSection.style.backgroundSize = "cover";
+            heroSection.style.transition = "background-image 1s ease-in-out";
+
+            updateHeroBackground();
+
+        </script>
+        <footer>
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                        <a href="terms.html">Terms of conditions</a>
+                        <a href="help.html">Contact Us</a>
+                        <a href="about.html">About Us</a>
+                        <a href="careers.html">Careers</a>
+                        <a href="blog.html">Blog</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Sponsored Links</h3>
+                    <div class="sponsored-links">
+                        <a href="https://www.noahrealestateplc.com/" target="_blank">
+                            <img src="https://images.pexels.com/photos/259962/pexels-photo-259962.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Noah Real Estate" style="height:24px;vertical-align:middle;"> Noah Real Estate
+                        </a>
+                        <a href="https://www.sunriserealestates.com/" target="_blank">
+                            <img src="https://images.pexels.com/photos/32025867/pexels-photo-32025867/free-photo-of-modern-kitchen-interior-with-elegant-lighting.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Sunrise Real Estates" style="height:24px;vertical-align:middle;"> Sunrise Real Estates
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p>Email: info@nafirhomes.com</p>
+                    <p>Phone: +251 123 456 789</p>
+                    <p>Address: Addis Ababa, Ethiopia</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="footer-social">
+                        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="height:22px;"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style="height:22px;"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="height:22px;"></a>
+                        <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="height:22px;"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2024 Nafir Homes. All rights reserved.
+            </div>
+        </footer>
+    </body>
+</html>

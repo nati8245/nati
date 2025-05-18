@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nafir Homes|Sign up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+          *{
+                margin: 0%;
+                 font-family: "Work Sans";
+           
+            }
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                overflow-x: hidden;
+                overflow-y: hidden;
+            }
+            .left{
+              width: 100%;
+              height: 100%;
+              padding: 30px;
+              background: linear-gradient(120deg ,#416c97,#000d0e);
+              align-content: center;
+              text-align: center;
+              color:white ;
+              }
+              .left h1{
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                letter-spacing: 5px;
+                font-size: 50px;
+
+              }
+            .right{
+              width: 100%;
+              height: 100%;
+              padding: 30px;
+             
+              text-align: center;
+              align-content: center;
+              color: #21494e;
+
+
+            }
+            .right h1{
+                color: #21494e;
+                font-size: 50px;
+                text-shadow: 0 0 3px rgb(98, 14, 255);
+
+            }
+            .right input{
+                width: 100%;
+                margin:0 25px;
+                padding: 20px 5px;
+                border: none;
+                border-bottom:1px solid #21494e;
+                font-size: 20px;
+            }
+            .right input:focus{
+                outline:invert;
+            }
+            .right button{
+                width:100%;
+                margin: 0 20px;
+                align-self: center;
+                background-color: #1a344e;
+                padding: 17px;
+                font-size: 20px;
+                color: aliceblue;
+                transition: all 0.3s ease-in;
+
+
+            }
+            .right button:hover{
+                background: #2e5d8c;
+                cursor:pointer;
+                transform: scale(0.95);
+            }
+            .left p{
+                font-family: cursive;
+                font-size: 40px;
+                letter-spacing: 5px;
+
+            }
+            .left button{
+                height: 50px;
+                background-color: #000000;
+                width: 200px;
+                font-size: 20px;
+                transition: all 0.4s ease-in-out;
+                margin-top: 40px;
+                color:white;
+                box-shadow: 0 0 10px;
+            }
+            .left button:hover{
+                transform: scale(0.97);
+                color: white;
+                background: #1a344e;
+                box-shadow:3px 1px 10px #f7f7f7;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body>
+       <div class="left">
+        <h1>NAFIR HOMES</h1>
+        <p>Sign Up Here!</p>
+        <p>Have a Nice journy</p>
+        <a href="WEB.html"><button>GO HOME</button></a>
+       </div>
+       <div class="right">
+        <form id="kk">
+        <h1>SIGN UP</h1>
+        <input type="text" placeholder="Username" required><br><br>
+        <input type="email" placeholder="Email" required><br><br>
+        <input type="password" placeholder="Password" required><br><br>
+        <input type="password" placeholder="Confirm Password" required><br><br>
+        <button type="submit">SIGN UP</button><br><br>
+        Already Have An Account! <a href="SIGN IN.HTML">Sign In To An Existing Account</a>
+    </form>
+       </div>
+       <script>
+        document.getElementById("kk").addEventListener("submit", function(event){
+          event.preventDefault();
+      
+          // Fake login for now — assume always successful
+          localStorage.setItem("isLoggedIn", "true");
+      
+          alert('Signed in successfully! 😊');
+          window.location.href = "WEB.html"; // Redirect to main/home page
+        });
+        localStorage.setItem("username", enteredUsername);
+      </script>
+</body>
+</html>

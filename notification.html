@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nafir Homes | Notifications</title>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Work Sans', sans-serif;
+      background: linear-gradient(135deg, #f9fefe, #d2baba);
+      color: black;
+      display: flex;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .sidebar {
+      background-color: #2c3e50;
+      width: 150px;
+      color: white;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      margin-bottom: 70px;
+      font-size: 18px;
+    }
+
+    .sidebar a:hover {
+      text-decoration: underline;
+    }
+
+    .content-area {
+      flex: 1;
+      padding: 10px;
+      margin-left: 250px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .email-container {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .email-container h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .email-container p {
+      font-size: 20px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .email-container .email-body {
+      background-color: #f4f6f7;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      font-size: 16px;
+      line-height: 1.6;
+      color: #555;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .notification-container {
+      margin-top: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .notification-item {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logout-btn {
+      padding: 10px 20px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .logout-btn:hover {
+      background-color: #ff3333;
+    }
+    img{
+      width:100px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar">
+    <h2>Nafir Homes</h2>
+    <a href="WEB.html">Home</a>
+    <a href="saved-homes.html">Saved Homes</a>
+    <a href="Fined homes.html">Find Homes</a>
+    <button class="logout-btn" onclick="logout()">Sign Out</button>
+  </div>
+
+  <div class="content-area">
+    <div class="email-container">
+      <h1>Email - Notification</h1>
+      <p>New Notification Received</p>
+      <div class="email-body" id="emailBody">
+        <!-- Notification message content will be inserted here -->
+      </div>
+    </div>
+
+    <div class="notification-container" id="notificationContainer">
+      <h2>Your Notifications</h2>
+      <div id="notificationText">Checking notifications...</div>
+    </div>
+  </div>
+
+  <script>
+    // Protect access to page
+    if (localStorage.getItem("isLoggedIn") !== "true") {
+      alert("You must be signed in to view notifications.");
+      window.location.href = "sign-in.html";
+    }
+
+    // Load and show notifications
+    const notifText = document.getElementById("notificationText");
+    const notifications = JSON.parse(localStorage.getItem("notifications")) || [];
+    
+    if (notifications.length > 0) {
+      notifText.innerHTML = `
+        <ul style="list-style:none; padding:0; text-align:left; max-height:300px; overflow-y:auto;">
+          ${notifications.map(note => `<li class="notification-item">${note}</li>`).join('')}
+        </ul>
+      `;
+
+      // Show notification content in email body format
+      document.getElementById("emailBody").innerHTML = `
+        <p><strong>You have received a new notification:</strong></p>
+        <p>${notifications[notifications.length - 1]}</p>
+      `;
+    } else {
+      // Display default message when there are no notifications
+      notifText.textContent = "You have no notifications yet.";
+      document.getElementById("emailBody").innerHTML = `
+        <p><strong>Welcome!</strong></p>
+        <p>You have no notifications at the moment. Please check back later.</p>
+        <img src="https://i.pinimg.com/736x/a3/f0/e3/a3f0e31002bfb1b4cd4f8d8c5aacaf70.jpg">
+      `;
+    }
+
+    // Logout function
+    function logout() {
+      localStorage.removeItem("isLoggedIn");
+      alert("You have been logged out.");
+      window.location.href = "sign-in.html";
+    }
+  </script>
+  
+</body>
+</html>

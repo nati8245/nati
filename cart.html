@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nafir Homes | Cart</title>
+  <style>
+    body {
+      font-family: 'Work Sans', sans-serif;
+      background: #f8f9fa;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      height: 40px;
+      width: 100%;
+      display: flex;
+      border-bottom: 2px groove gold;
+      align-items: center;
+      padding: 0 20px;
+      background: transparent;
+      color: rgb(0, 0, 0);
+      position: fixed;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 0 40px;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      border-bottom: 1px solid #000;
+      padding-bottom: 5px;
+    }
+    .container {
+      margin-top: 100px;
+      padding: 20px;
+    }
+    .home-card {
+      background: white;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      overflow: hidden;
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+    .home-card img {
+      width: 200px;
+      height: 100%;
+      object-fit: cover;
+    }
+    .home-info {
+      padding: 15px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .home-info h3 {
+      margin: 0 0 10px;
+      color: #333;
+    }
+    .home-info p {
+      margin: 5px 0;
+      color: #666;
+    }
+    .home-info ul{
+      list-style: none;
+      padding: 0;
+      display: flex;
+      margin: 0;
+      justify-content: space-between;
+    }
+    .home-info ul li {
+      margin-bottom: 5px;
+      color: #666;
+    }
+    .home-info ul li strong {
+      color: #333;
+    }
+    .empty-cart {
+      text-align: center;
+      color: #888;
+      margin-top: 40px;
+      font-size: 22px;
+    }
+    .home-info .buttons {
+      display: flex;
+      justify-content:space-around;
+      margin-top: auto;
+      width:400px;
+      height: 40px;
+    }
+    .remove-btn {
+      background: #dfb809;
+      color: #000;
+      width: fit-content;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 12px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .remove-btn:hover {
+      background: #bfa006;
+      color: #fff;
+    }
+     .contact-btn {
+              background: #fffbe6;
+              color: #bfa006;
+              width: fit-content;
+              border: 1px solid #dfb809;
+              border-radius: 5px;
+              padding: 6px 12px;
+              cursor: pointer;
+              margin-top: 10px;
+              font-weight: bold;
+              margin-left: 10px;
+              transition: background 0.2s, color 0.2s;
+              }
+              .contact-btn:hover {
+              background: #dfb809;
+              color: #fff;
+              }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        padding: 10px 20px;
+      }
+      .home-card {
+        flex-direction: column;
+        width: 100%;
+      }
+      .home-card img {
+        width: 100%;
+        height: auto;
+      }
+      .home-info .buttons {
+        /* flex-direction: column; */
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><h1>Nafir Homes</h1></div>
+    <div>
+      <a href="WEB.html">Home</a>
+      <a href="saved-homes.html">Saved Homes</a>
+      <a href="notification.html">Notifications</a>
+      <a href="sign-in.html">Sign In</a>
+      <a href="Fined homes.html">Cart</a>
+    </div>
+  </nav>
+  <div class="container">
+    <h2>Your Cart</h2>
+    <div id="cartContainer"></div>
+  </div>
+  <script>
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const container = document.getElementById("cartContainer");
+      container.innerHTML = "";
+
+      if (cart.length === 0) {
+        container.innerHTML = '<div class="empty-cart">Your cart is empty.</div>';
+        return;
+      }
+
+      cart.forEach((home, idx) => {
+        const card = document.createElement("div");
+        card.className = "home-card";
+        card.innerHTML = `
+         <img src="${home.imageUrl}" alt="Home Image">
+  <div class="home-info">
+    <h3>${home.title}</h3>
+    <p>Location: ${home.location}</p>
+    <p>Units: ${home.units}</p>
+    <p><strong>Email:</strong> ${home.ownerEmail || home.email || home.ownerContact || 'No email found'}</p>
+    <ul>
+      <li><strong>Bedrooms:</strong> ${home.bedrooms || 3} </li>
+      <li><strong>Bathrooms:</strong> ${home.bathrooms  || 3}</li>
+      <li><strong>Year Built:</strong> ${home.yearBuilt  || 2020}</li>
+      <li><strong>Status:</strong> ${home.status || 'Available'}</li>
+    </ul>
+    <div class="buttons">
+      <button class="remove-btn" data-idx="${idx}">Remove</button>
+      <button class="contact-btn" data-owner="${home.ownerEmail || home.email || home.ownerContact || 'No contact info'}" onclick="this.outerHTML='<span>Contact: ' + this.getAttribute('data-owner') + '</span>'">Contact Them</button>
+    </div>
+  </div>
+`;
+        container.appendChild(card);
+      });
+
+      // Remove from cart handler
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const idx = parseInt(this.getAttribute('data-idx'));
+          cart.splice(idx, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+        });
+      });
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Work Sans', sans-serif;
+            }
+            body {
+                overflow-x: hidden;
+                background-color: #f8f9fa;
+                  
+                background-attachment: fixed;
+                /* height: 100vh; */
+                position: relative;
+            }
+            @keyframes back{
+                0%{
+                    background-position:100% 100%;
+                }
+                50%{
+                    background-position:0% 0%;
+                }
+                100%{
+                    background-position:100% 100%;
+                }
+            }
+            nav {
+                height: 30px;
+                position: absolute;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 50px;
+                background: #0d12173c;
+                color: white;
+                width: 100%;
+            }
+            nav a {
+                color: white;
+                text-decoration: none;
+                font-size: 16px;
+                padding: 0 10px;
+                transition: 0.3s;
+            }
+            nav a:hover {
+                text-decoration: underline;
+            }
+            
+            nav select{
+                font-size: 12px;
+                border: none;
+                background: transparent;
+                color: white;
+                padding-left: 5px;
+                margin-bottom:5px;
+            }
+            nav select option{
+                 color: rgb(0, 0, 0);
+            }
+            .hero {
+                height: 100vh;
+                min-height: 0;            
+                display: flex;
+                /* The background will be set by JS, so keep only layout styles here */
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                background-size: cover;
+                animation: back 100s ease infinite;
+                transition: background-image 1s ease;     
+               color: white;
+               
+            }
+              
+         .hero .left{
+            width:50%;
+            align-content: center;
+            
+         }
+         .hero .right{
+            width:50%;
+            text-align: end;
+            padding: 30px; 
+
+         }
+            .right h1{
+                font-size:90px;
+                margin-top: 50px;
+                   animation : fadeIn 2s ease-in-out;
+            }
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                    transform: translateY(20px);
+                    
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            .hero button {
+                background:transparent;
+                border: none;
+                padding: 12px 24px;
+                font-size: 20px;
+                color: white;
+                cursor: pointer;
+                margin-top: 20px;
+                transition: 0.3s;
+                 animation : fadeIn 2s ease-in-out;
+            }
+            .hero button:hover {
+                transform: scale(1.05);
+                background-color: #f9f9f953;
+            }
+            .real-estate-list {
+                display: flex;
+                /* flex-wrap: wrap; */
+                justify-content: center;
+                gap: 30px;
+                padding: 20px;
+                animation : fade 2s ease-in-out;
+               
+                
+            }
+             @keyframes fade {
+                0% {
+                    opacity: 0;
+                    transform: translateY(10px);
+                   
+                }
+                100% {
+                    opacity: 1;
+                    
+                }
+            }
+            .real-estate-card {
+                width: auto;
+                /* border-radius: 8px; */
+                overflow: hidden;
+                /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+                background: transparent;
+                transition: transform 0.3s ease;
+            }
+             .real-estate-list a{
+                text-decoration: none;
+             }
+            .real-estate-card:hover {
+                transform: scale(1.05);
+            }
+            .real-estate-card img {
+                width: 100%;
+                height:auto;
+                object-fit: cover;
+                transition: opacity 0.3s ease;
+            }
+            .real-estate-card:hover img {
+                opacity: 0.8;
+            }
+            .real-estate-card .info {
+                padding: 20px;
+                text-align: left;
+            }
+            .real-estate-card h2 {
+                font-size: 22px;
+                color: #ffffff;
+                margin-bottom: 10px;
+            }
+            .real-estate-card p {
+                color: #ffffff;
+            }
+              #section {
+                display: flex;
+                /* height: 100vh; */
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 20px;
+             
+              }
+    .sponsor{
+    min-height: 100vh;
+    display: flex;  
+    /* flex-wrap: wrap; */
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    animation : fade 2s ease-in-out;
+}
+            .sponsor img{
+                width: 300px;
+                height: 200px;
+                border-radius: 8px;
+                object-fit: cover;
+                transition: opacity 0.3s ease;
+            }
+            .about {
+                text-align: center;
+                padding: 40px 20px;
+                background: white;
+                color: #000000;
+            }
+            .about h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+            .about p {
+                max-width: 800px;
+                margin: auto;
+                font-size: 18px;
+                line-height: 1.6;
+            }
+            .blog {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 30px;
+                padding: 20px;
+            }
+           .blog {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f9f9f9;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .blog-item h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2d3a4b;
+        }
+        #ethiopia-news-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #ethiopia-news-list li {
+            margin-bottom: 0.75rem;
+            font-size: 1rem;
+        }
+        #ethiopia-news-list a {
+            color: #0077cc;
+            text-decoration: none;
+            transition: color 0.2s;
+            word-break: break-word;
+        }
+        #ethiopia-news-list a:hover {
+            color: #005fa3;
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            .blog {
+                padding: 0.5rem;
+                border-radius: 8px;
+            }
+            .blog-item h2 {
+                font-size: 1.1rem;
+            }
+            #ethiopia-news-list li {
+                font-size: 0.95rem;
+            }
+        }
+
+   footer {
+                    background: #000000;
+                    padding: 40px 0 0 0;
+                    margin-top: 40px;
+                    font-family: 'Work Sans', Arial, sans-serif;
+                    border-top: 1px solid #e0e0e0;
+                }
+                .footer-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding-bottom: 30px;
+                }
+                .footer-section {
+                    flex: 1 1 220px;
+                    margin: 20px 15px;
+                    min-width: 220px;
+                }
+                .footer-section h3 {
+                    color: #ffffff;
+                    margin-bottom: 12px;
+                    font-size: 1.1em;
+                    font-weight: 600;
+                }
+                .footer-links {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                }
+                .footer-links a {
+                    color: #ffffff;
+                    text-decoration: none;
+                    font-weight: 500;
+                    transition: color 0.2s;
+                }
+                .footer-links a:hover {
+                    color: #005fa3;
+                    text-decoration: underline;
+                }
+                .sponsored-links {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    font-size: 0.98em;
+                }
+                .sponsored-links a {
+                    display: flex;
+                    align-items: center;
+                    gap: 7px;
+                    color: #000000;
+                    text-decoration: none;
+                    background: #f5f5f5;
+                    border-radius: 5px;
+                    padding: 4px 10px;
+                    transition: background 0.2s;
+                }
+                .sponsored-links a:hover {
+                    background: #e0eaff;
+                }
+                .footer-section p {
+                    margin: 6px 0;
+                    color: #fbfbfb;
+                    font-size: 0.97em;
+                }
+                .footer-social {
+                    display: flex;
+                    gap: 14px;
+                    margin-top: 5px;
+                    color: white;
+                    background-color: #e0e0e0;
+                    height: 40px;
+                    text-align: center;
+                    justify-content: center;
+                    align-content: center;
+                    
+
+                }
+                .footer-social a img {
+                    filter: grayscale(1) brightness(0.7);
+                    transition: filter 0.2s;
+                    color:rgb(255, 255, 255);
+                }
+                .footer-social a:hover img {
+                    filter: none;
+                }
+                .footer-bottom {
+                    text-align: center;
+                    color: #ffffff;
+                    font-size: 0.97em;
+                    padding: 18px 0 10px 0;
+                    
+                    background: #000000;
+                    margin-top: 20px;
+                }
+                @media (max-width: 900px) {
+                    .footer-container {
+                        flex-direction: column;
+                        align-items: center;
+                    }
+                    .footer-section {
+                        min-width: 180px;
+                        margin: 18px 0;
+                    }
+                }
